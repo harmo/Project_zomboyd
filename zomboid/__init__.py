@@ -1,3 +1,4 @@
+from maps import *
 from world import *
 from sprite import *
 from event import *

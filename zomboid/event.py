@@ -5,15 +5,16 @@ from main import *
 
 class Event(object):
 
-    def __init__(self, player, world):
-        self.player = player
+    def __init__(self, world, player):
         self.world = world
+        self.player = player
+        self.player.event = self
 
-    def listen_keys(self, event):
+    def listen_keys(self):
         """ MOUSE EVENTS """
         x, y = pygame.mouse.get_pos()
-        x -= (WIDTH/2)+self.world.dW
-        self.tx, self.ty = self.screen_to_iso(x, y)
+        x -= (WIDTH/2)+self.world.map.dW
+        self.tx, self.ty = self.world.screen_to_iso(x, y)
 
         """ KEY EVENTS """
         keys_pressed = pygame.key.get_pressed()
@@ -38,13 +39,3 @@ class Event(object):
         elif keys_pressed[pygame.K_DOWN]:
             return 'b'
         return None
-
-    def iso_to_screen(self, x, y):
-        xx = (x-y)*self.world.dW
-        yy = (x+y)*self.world.dH
-        return xx, yy
-
-    def screen_to_iso(self, x, y):
-        xx = (y+(x/2))/self.world.tileWidth
-        yy = (y-(x/2))/self.world.tileHeight
-        return xx, yy

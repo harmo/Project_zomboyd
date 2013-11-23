@@ -5,6 +5,14 @@ from zomboid import *
 
 WIDTH = 1280
 HEIGHT = 1024
+HALF_WIDTH = int(WIDTH / 2)
+HALF_HEIGHT = int(HEIGHT / 2)
+WALK_SPEED = 0.5
+RUN_SPEED = 1
+
+CATEGORIES = {
+    'PLAYER': []
+}
 
 
 class Main(object):
@@ -18,10 +26,20 @@ class Main(object):
         self.state = True
         self.frame = 0
 
-        self.world = World(self.screen)
-        self.player = Player(self.world)
-        self.event = Event(self.player, self.world)
-        self.camera = Camera(self.world)
+        ############################################
+
+        self.map = Maps('test.tmx')
+        self.map.load()
+        self.world = World()
+        self.world.add_map(self.map)
+        self.player = Player()
+        self.world.add_entities(self.player)
+        self.player.set_start_pos()
+        self.camera = Camera()
+        self.camera.set_target(self.player)
+        self.world.set_camera(self.camera)
+
+        ############################################
 
         self.loop()
 
@@ -31,19 +49,23 @@ class Main(object):
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.state = False
-                self.player.update(self.event.listen_keys(event))
 
-            self.world.render()
-
-            self.frame = self.player.render(self.frame)
-
-            self.camera.update(self.player)
+            self.world.update()
+            self.world.render(self.screen)
 
             pygame.display.flip()
-            self.clock.tick(120)
-            pygame.time.delay(100)
+            self.clock.tick(12)
+            # pygame.time.delay(100)
 
-        self.state = False
+
+class Struct(object):
+    def __init__(self, **entries):
+        self.__dict__.update(entries)
+
+
+def category():
+    return Struct(**CATEGORIES)
+CATEGORY = category()
 
 
 if __name__ == '__main__':
