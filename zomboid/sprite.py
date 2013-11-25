@@ -35,10 +35,13 @@ class BaseSprite(pygame.sprite.Sprite):
 
         # Movement properties
         self.speed = 0
-        self.posX = None
-        self.posY = None
+        self.posX = 0
+        self.posY = 0
+        self.cordX = 0
+        self.cordY = 0
 
     def get_all_tiles(self):
+        print('Loading sprites tiles'.format(self.category))
         for action in self.tiles:
             for filename in self.tiles[action]:
                 actor, action_lower = filename.split('_')
@@ -110,6 +113,51 @@ class BaseSprite(pygame.sprite.Sprite):
     def check_event(self):
         pass
 
+    def is_collide(self):
+        cur_tile_properties = self.world.collide_prop
+        if cur_tile_properties:
+            if self.direction in cur_tile_properties:
+                return True
+        if self.camera.cell_x and self.camera.cell_y:
+            next_x, next_y = self.next_cell()
+            next_tile_properties = self.world.get_property(next_x, next_y)
+            if next_tile_properties:
+                if self.get_reverse_direction(self.direction) in next_tile_properties:
+                    return True
+
+        self.world.collide_prop = None
+        return False
+
+    def next_cell(self):
+        if self.direction is 't':
+            next_cell = self.camera.cell_x+16, self.camera.cell_y+16
+        elif self.direction is 'r':
+            next_cell = self.camera.cell_x+18, self.camera.cell_y+17
+        elif self.direction is 'b':
+            next_cell = self.camera.cell_x+18, self.camera.cell_y+18
+        elif self.direction is 'l':
+            next_cell = self.camera.cell_x+16, self.camera.cell_y+17
+
+        elif self.direction is 'b_l':
+            next_cell = self.camera.cell_x+17, self.camera.cell_y+18
+        elif self.direction is 't_r':
+            next_cell = self.camera.cell_x+17, self.camera.cell_y+16
+        elif self.direction is 'b_r':
+            next_cell = self.camera.cell_x+18, self.camera.cell_y+17
+        elif self.direction is 't_l':
+            next_cell = self.camera.cell_x+16, self.camera.cell_y+17
+        return next_cell
+
+    def orientations_to_check(self, tile_properties):
+        orientations = []
+        for d in tile_properties:
+            orientations.append(get_reverse_direction[d])
+        return orientations
+
+    def get_reverse_direction(self, direction):
+        reverse = {'t': 'b', 't_r': 'b_l', 'r': 'l', 'b_r': 't_l', 'b': 't', 'b_l': 't_r', 'l': 'r', 't_l': 'b_r'}
+        return reverse[direction]
+
 
 class Player(BaseSprite):
 
@@ -126,8 +174,8 @@ class Player(BaseSprite):
         self.get_all_tiles()
 
     def set_start_pos(self):
-        self.posX = WIDTH / 2
-        self.posY = HEIGHT / 2
+        self.centerX = self.posX = WIDTH / 2
+        self.centerY = self.posY = HEIGHT / 2
         self.set_pos(self.posX+(self.rect.width/2), self.posY+(self.rect.height/2))
 
     def update(self):

@@ -17,6 +17,9 @@ class Maps(object):
         self.dH = self.tileHeight/2
         self.posList = {}
         self.tile_properties = {}
+        self.cell_numbers = {}
+        self.cell_numbers_x = {}
+        self.cell_numbers_y = {}
 
     def load(self):
         inc = 0
@@ -24,21 +27,41 @@ class Maps(object):
         progress.start()
         for layer_index in range(len(self.tmxMap.layernames.keys())):
             self.posList[layer_index] = {}
+            self.tile_properties[layer_index] = {}
             for x in range(self.num_tile_x):
                 self.posList[layer_index][x] = {}
-                self.tile_properties[layer_index][x] = {}
                 for y in range(self.num_tile_y):
-                    image = self.tmxMap.getTileImage(x, y, int(layer_index))
-                    if image:
-                        self.posList[layer_index][x][y] = (((x-y)*self.dW)+(WIDTH/2), ((x+y)*self.dH), image)
-                    self.tile_properties[layer_index][x][y] = self.tmxMap.getTileProperties((x, y, int(layer_index)))
+                    x_pos = ((x-y)*self.dW)+(WIDTH/2)
+                    y_pos = ((x+y)*self.dH)
+
+                    tile = self.tmxMap.getTileImage(x, y, int(layer_index))
+                    if tile:
+                        self.posList[layer_index][x][y] = (x_pos, y_pos, tile)
+
+                    tile_property = self.tmxMap.getTileProperties((x, y, int(layer_index)))
+                    if tile_property:
+                        self.tile_properties[layer_index]['{x}_{y}'.format(x=x+1, y=y+1)] = tile_property
+
                     inc = inc + 1 if inc + 1 <= self.num_tile_x*self.num_tile_y else inc
                     progress.update(inc)
         progress.finish()
 
+    def set_cell_numbers(self, cell_x, cell_y, x_pos, y_pos):
+        for x in range(x_pos, x_pos+self.tileWidth):
+            for y in range(y_pos, y_pos+self.tileHeight):
+                index = '{x}_{y}'.format(x=x, y=y)
+                self.cell_numbers[index] = (cell_x, cell_y)
+
     def get_pos(self, x, y, layer):
         return self.posList[layer][x][y][0], self.posList[layer][x][y][1]
 
-    def get_properties(self, x, y, layer):
-        if layer in self.posList:
-            return self.posList[layer][x][y]
+    def get_properties(self, x, y, type):
+        if type == 'collide':
+            index = '{x}_{y}'.format(x=x, y=y)
+            if index in self.tile_properties[WALL_LAYER]:
+                return self.tile_properties[WALL_LAYER][index]
+        return None
+
+    def get_cell(self, x, y):
+        index = '{x}_{y}'.format(x=x, y=y)
+        return (self.cell_numbers[index])

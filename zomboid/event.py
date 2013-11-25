@@ -12,9 +12,21 @@ class Event(object):
 
     def listen_keys(self):
         """ MOUSE EVENTS """
-        x, y = pygame.mouse.get_pos()
-        x -= (WIDTH/2)+self.world.map.dW
-        self.tx, self.ty = self.world.screen_to_iso(x, y)
+        if pygame.mouse.get_pressed()[0]:
+            print('|| MOUSE ||')
+            x, y = pygame.mouse.get_pos()
+            x -= (WIDTH/2)+self.world.map.dW
+            print('{x} px / {y} px'.format(x=x, y=y))
+            self.cell_x, self.cell_y = self.world.get_cell(x, y)
+            print(self.cell_x, self.cell_y)
+            self.world.set_property(self.cell_x, self.cell_y)
+            print(self.world.cur_property)
+            print(self.world.collide_prop)
+            print('-----------')
+
+            print('|| CAMERA ||')
+            print(self.world.camera.cell_x, self.world.camera.cell_y)
+            print('-----------')
 
         """ KEY EVENTS """
         keys_pressed = pygame.key.get_pressed()
