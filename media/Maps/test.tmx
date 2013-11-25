@@ -3,20 +3,398 @@
  <tileset firstgid="1" name="TileFloorExt" tilewidth="64" tileheight="128">
   <image source="TileFloorExt.png" width="512" height="1024"/>
  </tileset>
- <tileset firstgid="65" source="../../old/graphics/zomboid/TileWalls.tsx"/>
- <layer name="Calque de Tile 1" width="300" height="300">
+ <tileset firstgid="65" name="TileWalls" tilewidth="64" tileheight="128">
+  <image source="../../old/graphics/zomboid/TileWalls.png" width="512" height="1024"/>
+  <tile id="0">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="" value=""/>
+    <property name="collideN" value=""/>
+    <property name="collideW" value=""/>
+    <property name="cutN" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="" value=""/>
+    <property name="collideN" value=""/>
+    <property name="collideW" value=""/>
+    <property name="cutN" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="transparentW" value=""/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="transparentN" value=""/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="transparentW" value=""/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="transparentN" value=""/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="" value=""/>
+    <property name="collideN" value=""/>
+    <property name="collideW" value=""/>
+    <property name="cutN" value=""/>
+    <property name="cutW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="" value=""/>
+    <property name="cutW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="" value=""/>
+    <property name="collideN" value=""/>
+    <property name="collideW" value=""/>
+    <property name="cutN" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="transparentW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="transparentN" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="cutW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="cutN" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="transparentW" value=""/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="transparentN" value=""/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="WallW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="WallN" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="WallNW" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="WallSE" value=""/>
+    <property name="unflamable" value=""/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="38">
+   <properties>
+    <property name="" value=""/>
+    <property name="collideN" value=""/>
+    <property name="collideW" value=""/>
+    <property name="cutN" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="39">
+   <properties>
+    <property name="" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="transparentW" value=""/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="transparentN" value=""/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="WallW" value=""/>
+   </properties>
+  </tile>
+  <tile id="49">
+   <properties>
+    <property name="WallN" value=""/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="WallNW" value=""/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="WallSE" value=""/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="" value=""/>
+    <property name="collideN" value=""/>
+    <property name="collideW" value=""/>
+    <property name="cutN" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="" value=""/>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="WindowW" value=""/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="WindowN" value=""/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="DoorWallW" value=""/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="DoorWallN" value=""/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="collideW" value=""/>
+    <property name="cutW" value=""/>
+    <property name="transparentW" value=""/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="collideN" value=""/>
+    <property name="cutN" value=""/>
+    <property name="transparentN" value=""/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="cutW" value=""/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="cutN" value=""/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ground" width="300" height="300">
   <data encoding="base64" compression="zlib">
-   eJzt1CEKwDAQRNGY6uT+p60thZSo7g488Rg76q8xxjpwARQ7aZVeAR3oFZBCr4AUegWk0CsghV4BKfQKSKFXQAq9AgAAAAAAAAAAAOAP86H6C8AXvQJSzNcCdKVXQAqdAtLoFtDd3Kj+BQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnd2lQeMr
+   eJztwzENAAAMBKFb3r/lqugGCaumqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqvjwZON4r
   </data>
  </layer>
- <layer name="Calque 2" width="300" height="300">
+ <layer name="Walls" width="300" height="300">
+  <properties>
+   <property name="collidable" value="True"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt2jtqm1EYRVE1Tuux5VEZz38cccCCICw44Me+4LXggPir23y70sPlcnmwYwbcV9+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vu87vfLfr2xnwe8Ta/gDPV9XvevS4+vu/1ev02v4Az1fb7Vq8eb7/Xb9ArOUN+nXukVrOr71Cu9glV9n3qlV7Cq7/O2S7fN0ivgqr7P6/7/D8Pzy55ef/854G16BWeo79P0Clb1fZpeweq99/XjE1e3Q6/gLPcacUJXvmPngPvuNaK+24/sXP0evYKPUd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpewaq+T9MrWNX3aXoFq/o+Ta9gVd+n6RWs6vs0vYJVfZ+mV7Cq79P0Clb1fZpeAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8hb9bYcwP
-  </data>
- </layer>
- <layer name="Calque 3" width="300" height="300">
-  <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20KP6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAlwF+iwAB
+   eJzt1MFuWlEQREHzyUn+X0q8yIYwj4bE9JBXJbVkYcu6LOZcPj4+LrZmwKx9n6ZXkGrfp+kVpNr3aXoFqeR+2jd8pgGzo5u5vp/L8Pkj/9v0Cp618WbazdAr2OnoZp69o/bNv/OA2aO9uv6sfd//24DZ0b38/uzHr33/y7U78C4DZkmvvt34u0durd2Adxow+5e9Mr2Cr6RXuwbM7vXqk17pFWxwdDN6pVewiV7tGjDTq10DZvd69Tm90ivYQK92DZjp1a4BM73aNWCmV7sGzPRq14BZ0ivTK9hAr3YNmOnVrgGz61u59bPpFWxw61b0Sq9go6N7ad/uGQc8p327ZxwwO7qV9u2eccDs1p1crn5negUb3LoVvdIr2Ojobtq3e8YBM73aNWCmV7sGzPRq14CZXu0aMNOrXQNmerVrwEyvdg2Y6dWuATO92jVgple7Bsza92l6Ban2fZpeQap9n6ZXkGrfp+kVpNr3aXoFqfZ9ml5Bqn2fpleQat+n6RWk2vdpegWp9n2aXkGqfZ+mV5Bq36fpFaTa92l6Ban2fZpeQap9n6ZXkGrfp+kVpB65o/Ytn2HArH2fpleQat+n6RWk2vdpegWp9n2aXkGqfZ+mV5Bq36fpFaTa9znda/sd7e8P/Kl9n0d3236DXsEum7vzivdtGzD76ntr9u4dB8za93mvU5vfqFfwWu37TJp1pgGz9n2aXkGqfZ+mV5Bq36fpFaTa92l6Ban2fZpeQap9n0d3236DXsEu7ftMbrf9Dr2CHdr3qVd6Ban2fSb3236DXsEO7fvUKr2CVPs+j262/Q69gl1eeYftFrzDgFn7Pk2vINW+T9MrSLXv0/QKUu37NL2CVPs+Ta8g9eo7bPdg+4BZ+z5NryDVvk/TK0i179P0ClLt+zS9glT7Pk2vINW+T9MrSLXv0/QKUu37NL2CVPs+Ta8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF7hJzHcM5E=
   </data>
  </layer>
 </map>
