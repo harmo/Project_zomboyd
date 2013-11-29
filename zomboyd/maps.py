@@ -48,9 +48,9 @@ class Maps(object):
                             if 'collide' in tile_property:
                                 tmp_rect = pygame.Rect(x_pos, y_pos+self.tile_height, self.half_tile_width, self.half_tile_height)
                                 old_bottom = tmp_rect.bottom
-                                tmp_rect = tmp_rect.inflate(0, -1)
-                                tmp_rect.bottom = old_bottom-5
-                                tmp_rect.left += 5
+                                tmp_rect = tmp_rect.inflate(0, 10)
+                                tmp_rect.bottom = old_bottom-10
+                                # tmp_rect.left += 5
                                 self.unwalkable.append(tmp_rect)
 
                     inc = inc + 1 if inc + 1 <= self.num_tile_x*self.num_tile_y else inc
@@ -60,5 +60,6 @@ class Maps(object):
     def get_properties(self, x, y, type):
         if type == 'collide':
             if x in self.properties_list[WALL_LAYER] and y in self.properties_list[WALL_LAYER][x]:
-                return self.properties_list[WALL_LAYER][x][y][type]
+                if type in self.properties_list[WALL_LAYER][x][y]:
+                    return self.properties_list[WALL_LAYER][x][y][type]
         return None
