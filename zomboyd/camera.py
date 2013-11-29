@@ -23,16 +23,27 @@ class Camera(object):
         self.target = target
         self.rect.center = self.target.rect.center
 
-    def render_map(self, screen, maps):
-        for layer in maps.positions_list:
-            for x in maps.positions_list[layer]:
-                for y in maps.positions_list[layer][x]:
-                    tile_x = maps.positions_list[layer][x][y][0]-self.rect.left
-                    tile_y = maps.positions_list[layer][x][y][1]-self.rect.top/2-self.inset_y
-                    image = maps.positions_list[layer][x][y][2]
-                    screen.blit(image, (tile_x, tile_y))
+    def render_map(self, screen, map, layer, plane=None):
+        def blit_tile(x, y, tile_x, tile_y):
+            image = map.positions_list[layer][x][y][2]
+            screen.blit(image, (tile_x, tile_y))
+
+        for x in map.positions_list[layer]:
+            for y in map.positions_list[layer][x]:
+                tile_x = map.positions_list[layer][x][y][0]-self.rect.left
+                tile_y = map.positions_list[layer][x][y][1]-self.rect.top/2-self.inset_y
+
+                target_pos_y = HALF_HEIGHT-self.world.map.tile_height*2-self.target.rect.height
+
+                if layer is BACKGROUND_LAYER:
+                    blit_tile(x, y, tile_x, tile_y)
+                elif plane is 'first' and (tile_y >= target_pos_y or x >= HALF_WIDTH):
+                    blit_tile(x, y, tile_x, tile_y)
+                elif plane is 'second' and (tile_y < target_pos_y or x < HALF_WIDTH):
+                    blit_tile(x, y, tile_x, tile_y)
+
         if DEBUG:
-            for collide in maps.unwalkable:
+            for collide in map.unwalkable:
                 pygame.draw.rect(self.world.screen, (255, 255, 255), collide, 1)
 
     def render_player(self, screen, player):
@@ -54,7 +65,7 @@ class Camera(object):
                     return
 
             move_x, move_y = self.move()
-
+            # Add moves to offsets, to keep coords real after moves
             self.x_offset -= move_x
             self.y_offset -= move_y
 

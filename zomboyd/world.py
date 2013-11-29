@@ -35,8 +35,10 @@ class World(object):
         if not (self.camera):
             raise Exception('No camera !')
 
-        self.camera.render_map(screen, self.map)
+        self.camera.render_map(screen, self.map, BACKGROUND_LAYER)
+        self.camera.render_map(screen, self.map, WALL_LAYER, 'second')
         self.camera.render_player(screen, self.player)
+        self.camera.render_map(screen, self.map, WALL_LAYER, 'first')
 
     def get_cell(self, x, y):
         return iso_to_screen(x+self.camera.x_offset, y+self.camera.y_offset, self.map.half_tile_width, self.map.half_tile_height)
