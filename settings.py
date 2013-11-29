@@ -11,6 +11,7 @@ path = lambda *a: os.path.join(*a)
 project_path = lambda *a: os.path.join(PROJECT_ROOT, *a)
 
 DEBUG = True
+FPS = 15
 
 MEDIAS = 'medias'
 MAPS_DIR = os.path.join(MEDIAS, 'Maps')
@@ -26,7 +27,6 @@ HALF_WIDTH = int(WIDTH / 2)
 HALF_HEIGHT = int(HEIGHT / 2)
 WALK_SPEED = 2
 RUN_SPEED = 5
-FPS = 30
 LOADING_LABEL_POSITION = [HALF_WIDTH-20, HALF_HEIGHT-10]
 
 SPACE_DIRECTIONS = {1: 'b_l', 2: 'b', 3: 'b_r', 4: 'l', 5: '', 6: 'r', 7: 't_l', 8: 't', 9: 't_r'}
