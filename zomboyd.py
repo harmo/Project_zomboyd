@@ -2,7 +2,7 @@
 
 import pygame
 import time
-# import ocempgui.widgets
+import ocempgui.widgets
 from settings import *
 from zomboyd import *
 
@@ -42,7 +42,7 @@ class Zomboyd:
         # pygame.display.set_icon(icon)
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.bg_color = pygame.Color(BG_COLOR[0], BG_COLOR[1], BG_COLOR[2])
-        # self.__loading_screen()
+        self.__loading_screen()
 
         print('Loading map...')
         self.map = Maps(MAIN_MAP)
@@ -90,14 +90,15 @@ class Zomboyd:
         self.run = False
         pygame.quit()
 
-    # def __loading_screen(self):
-    #     widget_container = ocempgui.widgets.Renderer()
-    #     widget_container.set_screen(self.screen)
-    #     window = ocempgui.widgets.Box(WIDTH, HEIGHT)
-    #     loading_label = ocempgui.widgets.Label('Loading...')
-    #     loading_label.topleft = LOADING_LABEL_POSITION
-    #     window.add_child(loading_label)
-    #     widget_container.add_widget(window)
+    def __loading_screen(self):
+        widget_container = ocempgui.widgets.Renderer()
+        widget_container.set_screen(self.screen)
+        window = ocempgui.widgets.Box(60, 20)
+        widget_container.color = (0, 0, 0)
+        loading_label = ocempgui.widgets.Label('LOADING...')
+        window.add_child(loading_label)
+        window.topleft = LOADING_LABEL_POSITION
+        widget_container.add_widget(window)
 
 
 if __name__ == "__main__":
