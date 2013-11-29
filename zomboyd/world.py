@@ -39,7 +39,7 @@ class World(object):
         self.camera.render_player(screen, self.player)
 
     def get_cell(self, x, y):
-        return iso_to_screen(x+self.camera.x_inset, y+self.camera.y_inset, self.map.half_tile_width, self.map.half_tile_height)
+        return iso_to_screen(x+self.camera.x_offset, y+self.camera.y_offset, self.map.half_tile_width, self.map.half_tile_height)
 
     def get_next_cell(self, x, y, direction):
         if direction in ['t', 't_r', 'r']:

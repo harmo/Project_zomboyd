@@ -52,7 +52,7 @@ class BaseSprite(pygame.sprite.Sprite):
 
     def set_pos(self, x, y):
         self.rect.left = self.pos_x = x
-        self.rect.top = self.pos_y = y-self.world.camera.y_offset
+        self.rect.top = self.pos_y = y-self.world.camera.inset_y
         self.tmp_rect = self.rect
 
     def update(self):

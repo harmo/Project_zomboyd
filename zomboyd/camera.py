@@ -11,9 +11,9 @@ class Camera(object):
         self.world = None
         self.target = None
         self.rect = None
-        self.y_offset = 96
-        self.x_inset = 0
-        self.y_inset = 0
+        self.inset_y = 96
+        self.x_offset = 0
+        self.y_offset = 0
 
     def add_world(self, world):
         self.world = world
@@ -28,7 +28,7 @@ class Camera(object):
             for x in maps.positions_list[layer]:
                 for y in maps.positions_list[layer][x]:
                     tile_x = maps.positions_list[layer][x][y][0]-self.rect.left
-                    tile_y = maps.positions_list[layer][x][y][1]-self.rect.top/2-self.y_offset
+                    tile_y = maps.positions_list[layer][x][y][1]-self.rect.top/2-self.inset_y
                     image = maps.positions_list[layer][x][y][2]
                     screen.blit(image, (tile_x, tile_y))
         if DEBUG:
@@ -55,8 +55,8 @@ class Camera(object):
 
             move_x, move_y = self.move()
 
-            self.x_inset -= move_x
-            self.y_inset -= move_y
+            self.x_offset -= move_x
+            self.y_offset -= move_y
 
             # Update all collidable rects
             # TODO loop only on visible ones
