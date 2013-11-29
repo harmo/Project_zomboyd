@@ -103,4 +103,7 @@ class Zomboyd:
 
 if __name__ == "__main__":
     Zomboyd = Zomboyd()
-    Zomboyd.start()
+    try:
+        Zomboyd.start()
+    except KeyboardInterrupt:
+        print('\nExiting game...')
