@@ -11,6 +11,7 @@ class World(object):
         self.map = None
         self.camera = None
         self.player = None
+        self.is_ready = False
 
     def add_map(self, map):
         self.map = map

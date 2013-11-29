@@ -14,7 +14,8 @@ class Camera(object):
         self.inset_y = 96
         self.x_offset = 0
         self.y_offset = 0
-        self.outset = 20
+        self.min_outset = 20
+        self.max_outset = 25
         self.min_x = self.max_x = 0
         self.min_y = self.max_y = 0
 
@@ -27,7 +28,7 @@ class Camera(object):
         self.rect.center = self.target.rect.center
 
     def update(self):
-        if self.target.is_moving:
+        if self.target.is_moving or not self.world.is_ready:
             xx, yy = self.world.get_cell(HALF_WIDTH, HALF_HEIGHT-self.world.map.tile_height*2)
 
             if self.target.is_colliding:
@@ -45,14 +46,17 @@ class Camera(object):
             self.x_offset -= move_x
             self.y_offset -= move_y
 
-            self.min_x, self.min_y = xx-self.outset, yy-self.outset
-            self.max_x, self.max_y = xx+self.outset, yy+self.outset
+            self.min_x, self.min_y = xx-self.min_outset, yy-self.min_outset
+            self.max_x, self.max_y = xx+self.max_outset, yy+self.max_outset
 
             # Update all collidable rects
             # TODO loop only on visible ones
             for collide in self.world.map.unwalkable:
                 collide.left += move_x
                 collide.top += move_y
+
+            if not self.world.is_ready:
+                self.world.is_ready = True
 
     def move(self):
         origin_x, origin_y = self.rect.left, self.rect.top/2
