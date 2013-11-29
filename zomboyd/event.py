@@ -13,7 +13,7 @@ class Event(object):
     def listen_keys(self):
         if self.world:
             """ MOUSE EVENTS """
-            if pygame.mouse.get_pressed()[0]:
+            if DEBUG and pygame.mouse.get_pressed()[0]:
                 print('|| MOUSE ||')
                 x, y = pygame.mouse.get_pos()
                 x -= self.world.map.half_tile_width/2
