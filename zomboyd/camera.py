@@ -77,24 +77,14 @@ class Camera(object):
 
     def move(self):
         origin_x, origin_y = self.rect.left, self.rect.top/2
-        if self.target.direction == 't':
+
+        if self.target.direction in ['t', 't_l', 't_r']:
             self.rect.top -= self.target.speed
-        elif self.target.direction == 'b':
+        elif self.target.direction in ['b', 'b_l', 'b_r']:
             self.rect.top += self.target.speed
-        elif self.target.direction == 'l':
+        if self.target.direction in ['l', 't_l', 'b_l']:
             self.rect.left -= self.target.speed
-        elif self.target.direction == 'r':
+        elif self.target.direction in ['r', 't_r', 'b_r']:
             self.rect.left += self.target.speed
-        elif self.target.direction == 't_l':
-            self.rect.top -= self.target.speed
-            self.rect.left -= self.target.speed
-        elif self.target.direction == 't_r':
-            self.rect.top -= self.target.speed
-            self.rect.left += self.target.speed
-        elif self.target.direction == 'b_l':
-            self.rect.top += self.target.speed
-            self.rect.left -= self.target.speed
-        elif self.target.direction == 'b_r':
-            self.rect.top += self.target.speed
-            self.rect.left += self.target.speed
+
         return (origin_x-self.rect.left, origin_y-self.rect.top/2)
