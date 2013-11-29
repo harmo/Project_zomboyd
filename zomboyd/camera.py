@@ -93,6 +93,12 @@ class Camera(object):
                         elif plane is 'second' and (tile_y < target_pos_y or x < HALF_WIDTH):
                             blit_tile(x, y, tile_x, tile_y)
 
+        ### TESTS
+        color = pygame.Color(0, 0, 0, 120)
+        ellipse_rect = self.rect.inflate(-50, -50)
+        ellipse = pygame.draw.ellipse(screen, color, ellipse_rect)
+        ###
+
         if DEBUG:
             for collide in map.unwalkable:
                 pygame.draw.rect(self.world.screen, (255, 255, 255), collide, 1)
