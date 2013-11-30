@@ -86,9 +86,6 @@ class Zomboyd:
             self.world.update()
             self.world.render(self.screen)
 
-            # pygame.display.flip()
-            pygame.display.update(self.player.mask.rect)
-
         self.run = False
         pygame.quit()
 
