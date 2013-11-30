@@ -10,7 +10,8 @@ PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 path = lambda *a: os.path.join(*a)
 project_path = lambda *a: os.path.join(PROJECT_ROOT, *a)
 
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 FPS = 15
 
 MEDIAS = 'medias'
@@ -25,6 +26,9 @@ WIDTH = 1280
 HEIGHT = 1024
 HALF_WIDTH = int(WIDTH / 2)
 HALF_HEIGHT = int(HEIGHT / 2)
+
+MASK = os.path.join(MEDIAS, 'mask_circle.png')
+
 WALK_SPEED = 2
 RUN_SPEED = 5
 LOADING_LABEL_POSITION = [HALF_WIDTH-20, HALF_HEIGHT-10]
