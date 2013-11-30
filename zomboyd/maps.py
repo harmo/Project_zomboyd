@@ -22,6 +22,9 @@ class Maps(object):
         self.properties_list = {}
         self.unwalkable = []
 
+        self.mask = None
+        self.mask_rect = None
+
     def load(self):
         inc = 0
         progress = ProgressBar(maxval=self.num_tile_x*self.num_tile_y, widgets=[Percentage(), ' ', Bar(), ' ', ETA()])

@@ -3,7 +3,7 @@
 import os
 import pygame
 from settings import *
-from utils import CATEGORY, screen_to_iso
+from utils import CATEGORY
 from event import *
 
 
@@ -147,6 +147,12 @@ class Player(BaseSprite):
         self.walk_tile = PLAYER_WALK
         self.run_tile = PLAYER_RUN
         self.direction = 'b_r'
+        self.visibility_w = 600
+        self.visibility_l = 1024
+        self.mask = None
+
+    def set_mask(self, mask):
+        self.mask = mask
 
     def set_pos(self, x, y):
         BaseSprite.set_pos(self, x, y)
@@ -155,6 +161,8 @@ class Player(BaseSprite):
         BaseSprite.update(self)
 
     def check_event(self):
-        # Event(self.world, self)
         event = Event(self.world)
         return event.listen_keys()
+
+    def visibility(self):
+        return self.visibility_w, self.visibility_l

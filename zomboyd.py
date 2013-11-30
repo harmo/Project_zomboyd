@@ -17,6 +17,7 @@ class Zomboyd:
         self.world = None
         self.camera = None
         self.player = None
+        self.mask = None
         Zomboyd.instance = self
 
     @staticmethod
@@ -64,6 +65,13 @@ class Zomboyd:
         self.player.set_pos(HALF_WIDTH, HALF_HEIGHT)
         self.camera.set_target(self.player)
 
+        print('Initialize mask...')
+        self.mask = Mask()
+        self.mask.load_default()
+        self.mask.scale(self.player.visibility())
+        self.mask.rotate(self.player.direction)
+        self.player.set_mask(self.mask)
+
         self.init_game()
 
     def init_game(self):
@@ -85,7 +93,8 @@ class Zomboyd:
             self.world.update()
             self.world.render(self.screen)
 
-            pygame.display.flip()
+            # pygame.display.flip()
+            pygame.display.update(self.player.mask.rect)
 
         self.run = False
         pygame.quit()

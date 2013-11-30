@@ -14,10 +14,15 @@ class Camera(object):
         self.inset_y = 96
         self.x_offset = 0
         self.y_offset = 0
-        self.min_outset = 20
-        self.max_outset = 25
+        self.min_outset = 13
+        self.max_outset = 18
         self.min_x = self.max_x = 0
         self.min_y = self.max_y = 0
+
+        self.surface = None
+        self.ellipse = None
+
+        self.visibility = HALF_WIDTH/2, HALF_HEIGHT
 
     def add_world(self, world):
         self.world = world
@@ -54,6 +59,12 @@ class Camera(object):
             for collide in self.world.map.unwalkable:
                 collide.left += move_x
                 collide.top += move_y
+
+            ### TESTS
+            # print(self.target.mask.surface)
+            # print(self.target.mask.rect)
+            self.target.mask.update(self.target.direction)
+            self.target.mask.rect.center = self.rect.centerx-self.x_offset+120, self.rect.centery-self.y_offset*2+120
 
             if not self.world.is_ready:
                 self.world.is_ready = True
@@ -94,9 +105,8 @@ class Camera(object):
                             blit_tile(x, y, tile_x, tile_y)
 
         ### TESTS
-        color = pygame.Color(0, 0, 0, 120)
-        ellipse_rect = self.rect.inflate(-50, -50)
-        ellipse = pygame.draw.ellipse(screen, color, ellipse_rect)
+        # screen.blit(map.mask, map.mask_rect, None, pygame.BLEND_RGB_SUB)
+        screen.blit(self.target.mask.surface, self.target.mask.rect)
         ###
 
         if DEBUG:
