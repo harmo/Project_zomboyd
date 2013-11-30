@@ -65,13 +65,6 @@ class Zomboyd:
         self.player.set_pos(HALF_WIDTH, HALF_HEIGHT)
         self.camera.set_target(self.player)
 
-        print('Initialize mask...')
-        self.mask = Mask()
-        self.mask.load_default()
-        self.mask.scale(self.player.visibility())
-        self.mask.rotate(self.player.direction)
-        self.player.set_mask(self.mask)
-
         self.init_game()
 
     def init_game(self):

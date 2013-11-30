@@ -60,12 +60,6 @@ class Camera(object):
                 collide.left += move_x
                 collide.top += move_y
 
-            ### TESTS
-            # print(self.target.mask.surface)
-            # print(self.target.mask.rect)
-            self.target.mask.update(self.target.direction)
-            self.target.mask.rect.center = self.rect.centerx-self.x_offset+120, self.rect.centery-self.y_offset*2+120
-
             if not self.world.is_ready:
                 self.world.is_ready = True
 
@@ -105,8 +99,7 @@ class Camera(object):
                             blit_tile(x, y, tile_x, tile_y)
 
         ### TESTS
-        # screen.blit(map.mask, map.mask_rect, None, pygame.BLEND_RGB_SUB)
-        screen.blit(self.target.mask.surface, self.target.mask.rect)
+
         ###
 
         if DEBUG:

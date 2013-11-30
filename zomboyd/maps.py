@@ -22,9 +22,6 @@ class Maps(object):
         self.properties_list = {}
         self.unwalkable = []
 
-        self.mask = None
-        self.mask_rect = None
-
     def load(self):
         inc = 0
         progress = ProgressBar(maxval=self.num_tile_x*self.num_tile_y, widgets=[Percentage(), ' ', Bar(), ' ', ETA()])
@@ -53,7 +50,6 @@ class Maps(object):
                                 old_bottom = tmp_rect.bottom
                                 tmp_rect = tmp_rect.inflate(0, 10)
                                 tmp_rect.bottom = old_bottom-10
-                                # tmp_rect.left += 5
                                 self.unwalkable.append(tmp_rect)
 
                     inc = inc + 1 if inc + 1 <= self.num_tile_x*self.num_tile_y else inc

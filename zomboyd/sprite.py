@@ -149,10 +149,6 @@ class Player(BaseSprite):
         self.direction = 'b_r'
         self.visibility_w = 600
         self.visibility_l = 1024
-        self.mask = None
-
-    def set_mask(self, mask):
-        self.mask = mask
 
     def set_pos(self, x, y):
         BaseSprite.set_pos(self, x, y)
