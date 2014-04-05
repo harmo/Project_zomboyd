@@ -18,6 +18,7 @@ class Zomboyd:
         self.camera = None
         self.player = None
         self.mask = None
+        self.font = None
         Zomboyd.instance = self
 
     @staticmethod
@@ -43,6 +44,7 @@ class Zomboyd:
         # pygame.display.set_icon(icon)
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
         self.bg_color = pygame.Color(BG_COLOR[0], BG_COLOR[1], BG_COLOR[2])
+        self.font = pygame.font.SysFont('mono', 10, bold=True)
         self.__loading_screen()
 
         print('Loading map...')
@@ -85,6 +87,9 @@ class Zomboyd:
             self.screen.fill(self.bg_color)
             self.world.update()
             self.world.render(self.screen)
+            self.draw_text('FPS: {0}'.format(theClock.get_fps()))
+
+            pygame.display.flip()
 
         self.run = False
         pygame.quit()
@@ -98,6 +103,11 @@ class Zomboyd:
         window.add_child(loading_label)
         window.topleft = LOADING_LABEL_POSITION
         widget_container.add_widget(window)
+
+    def draw_text(self, text):
+        fw, fh = self.font.size(text)
+        surface = self.font.render(text, True, (0, 255, 0))
+        self.screen.blit(surface, (20, 20))
 
 
 if __name__ == "__main__":

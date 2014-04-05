@@ -14,15 +14,10 @@ class Camera(object):
         self.inset_y = 96
         self.x_offset = 0
         self.y_offset = 0
-        self.min_outset = 13
-        self.max_outset = 18
+        self.min_outset = 0
+        self.max_outset = 0
         self.min_x = self.max_x = 0
         self.min_y = self.max_y = 0
-
-        self.surface = None
-        self.ellipse = None
-
-        self.visibility = HALF_WIDTH/2, HALF_HEIGHT
 
     def add_world(self, world):
         self.world = world
@@ -54,6 +49,8 @@ class Camera(object):
             self.min_x, self.min_y = xx-self.min_outset, yy-self.min_outset
             self.max_x, self.max_y = xx+self.max_outset, yy+self.max_outset
 
+            self.set_visibility()
+
             # Update all collidable rects
             # TODO loop only on visible ones
             for collide in self.world.map.unwalkable:
@@ -62,6 +59,50 @@ class Camera(object):
 
             if not self.world.is_ready:
                 self.world.is_ready = True
+
+    def set_visibility(self):
+        vis_w = self.target.visibility()[0]/2
+        vis_l = self.target.visibility()[1]/4
+        if self.target.direction is 'b_r':
+            self.min_x -= vis_l
+            self.max_x += vis_l*3
+            self.min_y -= vis_w
+            self.max_y += vis_w
+        elif self.target.direction is 't_r':
+            self.min_x -= vis_w
+            self.max_x += vis_w
+            self.min_y -= vis_l*3
+            self.max_y += vis_l
+        elif self.target.direction is 't_l':
+            self.min_x -= vis_l*3
+            self.max_x += vis_l
+            self.min_y -= vis_w
+            self.max_y += vis_w
+        elif self.target.direction is 'b_l':
+            self.min_x -= vis_w
+            self.max_x += vis_w
+            self.min_y -= vis_l
+            self.max_y += vis_l*3
+        elif self.target.direction is 'r':
+            self.min_x -= (vis_l*3)/2-2
+            self.max_x += vis_l*2
+            self.min_y -= vis_w*2
+            self.max_y += vis_w
+        elif self.target.direction is 'l':
+            self.min_x -= vis_w*2
+            self.max_x += vis_w
+            self.min_y -= (vis_l*3)/2-2
+            self.max_y += vis_l*2
+        elif self.target.direction is 't':
+            self.min_x -= vis_l*2
+            self.max_x += (vis_l*3)/2-2
+            self.min_y -= vis_w*2
+            self.max_y += vis_w
+        elif self.target.direction is 'b':
+            self.min_x -= vis_w
+            self.max_x += vis_w*2
+            self.min_y -= (vis_l*3)/2-2
+            self.max_y += vis_l*2
 
     def move(self):
         origin_x, origin_y = self.rect.left, self.rect.top/2
@@ -78,8 +119,10 @@ class Camera(object):
         return (origin_x-self.rect.left, origin_y-self.rect.top/2)
 
     def render_map(self, screen, map, layer, plane=None):
-        def blit_tile(x, y, tile_x, tile_y):
+        def blit_tile(x, y, tile_x, tile_y, dark=None):
             image = map.positions_list[layer][x][y][2]
+            if dark is not None:
+                image.set_alpha(0)
             screen.blit(image, (tile_x, tile_y))
 
         for x in map.positions_list[layer]:
@@ -92,15 +135,11 @@ class Camera(object):
                         target_pos_y = HALF_HEIGHT-self.world.map.tile_height*2-self.target.rect.height
 
                         if layer is BACKGROUND_LAYER:
+                            blit_tile(x, y, tile_x, tile_y, True)
+                        elif plane is 'first' and tile_y >= target_pos_y:
                             blit_tile(x, y, tile_x, tile_y)
-                        elif plane is 'first' and (tile_y >= target_pos_y or x >= HALF_WIDTH):
+                        elif plane is 'second' and tile_y < target_pos_y:
                             blit_tile(x, y, tile_x, tile_y)
-                        elif plane is 'second' and (tile_y < target_pos_y or x < HALF_WIDTH):
-                            blit_tile(x, y, tile_x, tile_y)
-
-        ### TESTS
-
-        ###
 
         if DEBUG:
             for collide in map.unwalkable:

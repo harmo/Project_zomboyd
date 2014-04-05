@@ -12,14 +12,14 @@ project_path = lambda *a: os.path.join(PROJECT_ROOT, *a)
 
 # DEBUG = True
 DEBUG = False
-FPS = 60
+FPS = 20
 
 MEDIAS = 'medias'
 MAPS_DIR = os.path.join(MEDIAS, 'Maps')
 MAIN_MAP = 'test_small.tmx'
 # MAIN_MAP = 'test_huge.tmx'
 # MAIN_MAP = 'test.tmx'
-BG_COLOR = (1, 1, 1)
+BG_COLOR = (0, 0, 0)
 BACKGROUND_LAYER = 0
 WALL_LAYER = 1
 WIDTH = 1280

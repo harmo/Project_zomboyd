@@ -147,8 +147,8 @@ class Player(BaseSprite):
         self.walk_tile = PLAYER_WALK
         self.run_tile = PLAYER_RUN
         self.direction = 'b_r'
-        self.visibility_w = 600
-        self.visibility_l = 1024
+        self.visibility_w = 10
+        self.visibility_l = 20
 
     def set_pos(self, x, y):
         BaseSprite.set_pos(self, x, y)
